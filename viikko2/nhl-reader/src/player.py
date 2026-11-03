@@ -7,7 +7,9 @@ class Player:
         self.assists = player_dict["assists"]
     
     def __str__(self):
+        pisteet = self.goals + self.assists
+
         return (
-            f"{self.name} team {self.team} "
-            f"goals {self.goals} assists {self.assists}"
+            f"{self.name:22} {self.team:15} "
+            f"{self.goals:2} + {self.assists:2} = {pisteet:3}"
         )
