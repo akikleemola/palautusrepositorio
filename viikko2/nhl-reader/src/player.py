@@ -5,7 +5,7 @@ class Player:
         self.team = player_dict["team"]
         self.goals = player_dict["goals"]
         self.assists = player_dict["assists"]
-    
+
     def __str__(self):
         pisteet = self.goals + self.assists
 
