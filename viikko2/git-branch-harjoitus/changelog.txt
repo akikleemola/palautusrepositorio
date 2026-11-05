@@ -1,1 +1,2 @@
 Lisätty muutosloki bugikorjaus-haaraan.
+tehtävä 14 muutos alkuperäisestä kloonista.
