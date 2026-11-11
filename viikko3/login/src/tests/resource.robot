@@ -36,4 +36,17 @@ Go To Starting Page
 Register Page Should Be Open
     Get Title  ==  Register
 
+Set Username
+    [Arguments]  ${username}
+    Fill Text  id=username  ${username}
 
+Set Password
+    [Arguments]  ${password}
+    Fill Secret  id=password  $password
+
+Go To Register Page
+    Go To  ${REGISTER_URL}
+
+Set Password Confirmation
+    [Arguments]  ${password}
+    Fill Secret  id=password_confirmation  $password
