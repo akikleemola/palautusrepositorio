@@ -1,0 +1,9 @@
+Retrospektiivi on tilaisuus missä tiimi miettii edellistä sprinttiä. Mikä siinä meni hyvin, missä jutuissa voisi parantaa ja miten parannuksia otetaan käyttöön tulevissa sprinteissä.  
+
+Ensimmäinen tekniikka on Start, Stop, More of ja Less of Weel. Tässä tekniikassa tiimi tekee ympyrän jossa on viisi osaa. Näihin osiin tiimi kerää asioita jotka pitäisi aloitta, lopettaa, jatkaa ja asioita joita pitäisi tehdä enemmän ja vähemmän. 
+
+Toinen tekniikka on Glad, Sad ja Mad. Tässä tekniikassa tiimin osallistujat miettivät sprintin aikana olleita ongelmia, muutoksia ja havaintoja ja ne luokitellaan iloisiksi, surullisiksi tai vihaisiksi. Luokittelulla tarkoitetaan positiivisia huomioita, negatiivia huomioita ja valituksia. Kun asiat on luokiteltu pidetään äänestys ja asioita käsitellään suurimmasta äänimäärästä pienimpään.  
+
+Kolmas tekniikka on kierroksiin perustuva malli. Tässä mallissa valitaan kirjuri. Käydään läpi miten edellisen retrospektiivin parannuskohteet toteutuivat. Tämän jälkeen jokainen tiimin jäsen miettii hiljaa minuutin ajan yhden asian mikä sujui sprintin aikana hyvin. Jokainen tiimiläinen kertoo asiat ja niistä sitten keskustellaan. Sama toistetaan parannettaville asioille ja asioille jotka kannattaisi lopettaa.  
+
+Kun mietin itse retrospektiiviä niin mieleen tulee psykologinen turvallisuus. Eli se minkälainen on tiimin kulttuuri. Virheistä ei syyllistetä tai ongelmien esiintuomisesta ei suututa. Myös se on tärkeää että on jonkinlainen rakenne jossa kaikki pääsee puhumaan. Tiimeissä on aina hiljaisempia ihmisiä jotka jäävät sivuun jos on äänekkäitä persoonia. On kuitenkin tärkeää että jokainen tiimin jäsen pääsee kertomaan ajatuksiaan. On tärkeää että ongelmiin oikeasti tartutaan kiinni ja tehdään muutoksia. Muuten tiimin motivaatio retrospektiiviin huononee ja sitä pidetään turhana.
