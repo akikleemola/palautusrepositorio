@@ -1,5 +1,5 @@
 import unittest
-from unittest.mock import Mock, ANY
+from unittest.mock import Mock, ANY, call
 from kauppa import Kauppa
 from viitegeneraattori import Viitegeneraattori
 from varasto import Varasto
@@ -104,3 +104,58 @@ class TestKauppa(unittest.TestCase):
             "pekka", 42, "12345", "33333-44455", 5
         )
 
+    def test_uusi_asiointi_nollaa_edellisen_ostoskorin(self):
+        self.kauppa.aloita_asiointi()
+        self.kauppa.lisaa_koriin(1)
+        self.kauppa.lisaa_koriin(1)
+        self.kauppa.tilimaksu("pekka", "12345")
+
+        self.kauppa.aloita_asiointi()
+        self.kauppa.lisaa_koriin(1)
+        self.kauppa.tilimaksu("maija", "67890")
+
+        self.assertEqual(
+            self.pankki_mock.tilisiirto.call_args_list,
+            [
+                call("pekka", 42, "12345", "33333-44455", 10),
+                call("maija", 42, "67890", "33333-44455", 5),
+            ]
+        )
+
+    def test_jokaiselle_maksulle_pyydetaan_uusi_viite(self):
+        self.viitegeneraattori_mock.uusi.side_effect = [42, 43]
+
+        self.kauppa.aloita_asiointi()
+        self.kauppa.lisaa_koriin(1)
+        self.kauppa.tilimaksu("pekka", "12345")
+
+        self.kauppa.aloita_asiointi()
+        self.kauppa.lisaa_koriin(1)
+        self.kauppa.tilimaksu("maija", "67890")
+
+        self.assertEqual(
+            self.viitegeneraattori_mock.uusi.call_count, 2
+        )
+
+        self.assertEqual(
+            self.pankki_mock.tilisiirto.call_args_list,
+            [
+                call("pekka", 42, "12345", "33333-44455", 5),
+                call("maija", 43, "67890", "33333-44455", 5),
+            ]
+        )
+
+    def test_yhden_tuotteen_poistaminen_jattaa_toisen_koriin(self):
+        self.kauppa.aloita_asiointi()
+        self.kauppa.lisaa_koriin(1)
+        self.kauppa.lisaa_koriin(1)
+
+        self.kauppa.poista_korista(1)
+        self.kauppa.tilimaksu("pekka", "12345")
+
+        self.pankki_mock.tilisiirto.assert_called_with(
+            "pekka", 42, "12345", "33333-44455", 5
+        )
+        self.varasto_mock.palauta_varastoon.assert_called_once_with(
+            Tuote(1, "maito", 5)
+        )
