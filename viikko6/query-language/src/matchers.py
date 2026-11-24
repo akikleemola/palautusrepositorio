@@ -63,3 +63,24 @@ class Or:
                 return True
 
         return False
+
+
+class QueryBuilder:
+    def __init__(self, create_matcher=All):
+        self._create_matcher = create_matcher
+
+    def plays_in(self, team):
+        return QueryBuilder(lambda: And(self._create_matcher(), PlaysIn(team)))
+
+    def has_at_least(self, value, attr):
+        return QueryBuilder(
+            lambda: And(self._create_matcher(), HasAtLeast(value, attr))
+        )
+
+    def has_fewer_than(self, value, attr):
+        return QueryBuilder(
+            lambda: And(self._create_matcher(), HasFewerThan(value, attr))
+        )
+
+    def build(self):
+        return self._create_matcher()
