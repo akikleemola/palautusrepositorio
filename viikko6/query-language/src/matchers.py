@@ -82,5 +82,12 @@ class QueryBuilder:
             lambda: And(self._create_matcher(), HasFewerThan(value, attr))
         )
 
+    def one_of(self, *queries):
+        def create_matcher():
+            matchers = [query.build() for query in queries]
+            return And(self._create_matcher(), Or(*matchers))
+
+        return QueryBuilder(create_matcher)
+
     def build(self):
         return self._create_matcher()
