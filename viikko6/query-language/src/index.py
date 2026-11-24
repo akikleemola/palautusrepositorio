@@ -1,7 +1,7 @@
 from statistics import Statistics
 
-from matchers import QueryBuilder
 from player_reader import PlayerReader
+from query_parser import parse
 
 
 def main():
@@ -9,14 +9,7 @@ def main():
     reader = PlayerReader(url)
     stats = Statistics(reader)
 
-    query = QueryBuilder()
-
-    matcher = query.one_of(
-        query.plays_in("PHI")
-        .has_at_least(10, "assists")
-        .has_fewer_than(10, "goals"),
-        query.plays_in("EDM").has_at_least(50, "points"),
-    ).build()
+    matcher = parse("team = NYR and goals >= 10 and goals < 20")
 
     for player in stats.matches(matcher):
         print(player)
